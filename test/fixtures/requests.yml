@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  time: 2014-11-09 06:18:38
+  device_type: MyString
+  model: MyString
+  description: MyString
+  warranty: false
+  priority: MyString
+
+two:
+  user_id: 1
+  time: 2014-11-09 06:18:38
+  device_type: MyString
+  model: MyString
+  description: MyString
+  warranty: false
+  priority: MyString
