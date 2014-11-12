@@ -1,1 +1,10 @@
-<h1>HOme</h1>
+<%
+u = User.find_by_id(session[:user_id])
+if u!=nil && u.admin == true
+%>
+	<%= render 'manage' %>
+<% else %>
+
+	<h1>HOme</h1>
+
+<% end %>

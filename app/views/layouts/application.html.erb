@@ -6,7 +6,6 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
@@ -79,7 +78,7 @@
 		
 		<%= yield %>
 
-		<%= session.to_hash %>
+		<% session.to_hash %>
 
 	</div>
 

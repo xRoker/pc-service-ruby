@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
 .nav-bar {
 	display: inline;
 }
@@ -136,4 +138,12 @@
 .header strong {
     margin-left: 10px;
     font-size: 120%;
+}
+
+.user_list {
+    margin: 30px;
+}
+.user_list .list{
+    margin-top:30px;
+    margin-right:90px;
 }
