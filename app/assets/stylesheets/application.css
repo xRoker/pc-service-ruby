@@ -22,10 +22,6 @@
 	height: 200px;
 }
 
-.user-profile {
-    display: none;
-}
-
 .header {
     padding:10px;
 }
@@ -35,10 +31,6 @@
     width: 30px;
     height: 30px;
     padding: auto;
-}
-
-#wrong-password {
-	display: none;
 }
 
 /*    --------------------------------------------------
@@ -103,6 +95,10 @@
 	display: block;
 }
 
+#error-alert {
+    margin: 30px;
+}
+
 /*    --------------------------------------------------
 	:: Inputs & Buttons
 	-------------------------------------------------- */
@@ -116,6 +112,10 @@
 .btn-custom:hover,
 .btn-custom:focus {
     color: #fff;
+}
+#btn-changep {
+    color: #fff;
+    background-color: #ff4552;
 }
 
 /*    --------------------------------------------------

@@ -94,3 +94,8 @@
 
   </fieldset>
 </form>
+
+<% if flash[:notice] %>
+    <div class="alert alert-danger" id="error-alert" role="alert">Rejestracja nie powodła się</div>
+<% end %>
+

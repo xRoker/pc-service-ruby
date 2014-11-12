@@ -16,10 +16,17 @@
 //= require_tree .
 
 var main = function () {
-	
-    $('.navbar-right').click(function () {
+
+    $('.navbar-right').click( function(event){
+        event.stopPropagation();
         $('.dropdown-menu').toggle();
     });
+
+    $(document).click( function(){
+        $('.dropdown-menu').hide();
+    });
+
+
 
 }
 

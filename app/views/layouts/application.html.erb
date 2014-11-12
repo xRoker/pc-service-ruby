@@ -46,6 +46,19 @@
 				</ul>
 
 				<!-- The right login button -->
+
+				<% if session[:user_id] %>
+								<ul class="user-profile nav navbar-nav navbar-right">
+					<li class="dropdown"><a data-toggle="dropdown"
+						class="dropdown-toggle" href="#" id="user-menu"><%= User.find(session[:user_id]).name %><b
+							class="caret"></b></a>
+						<ul role="menu" class="dropdown-menu">
+							<li><%= link_to 'Zmiana hasła', edit_password_form_path %></li>
+							<li><%= link_to 'Wyloguj się', logout_path %></li>
+						</ul></li>
+				</ul>
+
+				<% else %>
 				<ul class="login nav navbar-nav navbar-right">
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#">Login <b class="caret"></b></a>
@@ -57,15 +70,7 @@
 						</ul></li>
 				</ul>
 
-				<ul class="user-profile nav navbar-nav navbar-right">
-					<li class="dropdown"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#" id="user-menu">@login<b
-							class="caret"></b></a>
-						<ul role="menu" class="dropdown-menu">
-							<li><a href="#">Zmiana hasła</a></li>
-							<li><a href="logout">Logout</a></li>
-						</ul></li>
-				</ul>
+				<% end %>
 
 
 			</div>
@@ -73,6 +78,8 @@
 		</row>
 		
 		<%= yield %>
+
+		<%= session.to_hash %>
 
 	</div>
 

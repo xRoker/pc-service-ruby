@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
 
   post '/create_user' => 'users#create_user'
-  get '/login' => 'sessions#login'
+  get '/login' => 'users#login'
+  post '/authorize' => 'users#authorize'
+  get '/logout' => 'users#logout'
+  get '/edit_password_form' => 'users#edit_password_form'
+  post '/edit_password' => 'users#edit_password'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

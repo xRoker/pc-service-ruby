@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
-	def login
-	end
+    skip_before_filter :verify_authenticity_token  
+
+
 end
