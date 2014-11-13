@@ -1,0 +1,101 @@
+<div class="user_list">
+
+  <form role="form">
+
+    <row>
+
+      <!-- Left column -->
+      <div class="col-md-6">
+
+        <div class = "form-group">
+          <label for="device-type">Typ sprzętu</label>
+          <select class="form-control">
+            <option>Laptop</option>
+            <option>Smartphone</option>
+            <option>Desktop</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="model">Model</label>
+          <input class="form-control" name="model" placeholder="Nazwa modelu"></input>
+        </div>
+        <div class="form-group">
+          <label for="description">Opis</label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <row>
+          <div class="col-md-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Gwarancja
+              </label>
+            </div>
+          </div>
+          <div class="col-md-2 form-control-static">
+            <label for="priority">Priorytet:</label>
+          </div>
+          <div class="col-md-4">
+            <select class="form-control" name:"priority">
+              <option>Niski</option>
+              <option>Wysoki</option>
+              <option>Awaryjny</option>
+            </select>
+          </div>
+
+        </row>
+        
+
+      </div>
+
+
+      <!-- Right column -->
+
+      <div class="col-md-3" id="req-right-clm">
+
+        <!-- Adress -->
+      <div class="control-group">
+        <!-- Company -->
+        <div class="form-group">
+            <label for="company">Firma</label>
+            <input class="form-control" name="company"></input>
+          </div>
+        <!-- Phone -->
+        <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input class="form-control" name="phone"></input>
+          </div>
+        <!-- Zip -->
+        <div class="form-group">
+            <label for="zip">Kod pocztowy</label>
+            <input class="form-control" name="zip"></input>
+          </div>
+      <!-- City -->
+      <div class="form-group">
+          <label for="city">Miejscowość</label>
+          <input class="form-control" name="city"></input>
+        </div>
+      <!-- Street -->
+      <div class="form-group">
+          <label for="street">Ulica</label>
+          <input class="form-control" name="street"></input>
+        </div>
+      <!-- Apartment -->
+      <div class="form-group">
+          <label for="apartment">Dom/Mieszkanie</label>
+          <input class="form-control" name="apartment"></input>
+        </div>
+
+    </div>
+
+      </div>
+    </row>
+
+    <row>
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-default" id="btn-request">Złożyć</button>
+      </div>
+    </row>
+
+  </form>
+
+</div>

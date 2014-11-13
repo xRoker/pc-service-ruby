@@ -147,3 +147,15 @@
     margin-top:30px;
     margin-right:90px;
 }
+
+#btn-request{
+    margin-top: 30px;
+    float: left;
+}
+
+#req-right-clm .form-control{
+   height: 28px;
+   font-size: 17px;
+   line-height: 28px;
+}
+
