@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
     skip_before_filter :verify_authenticity_token  
 
+    before_action :load_current_user, only: [:manage, :edit_password, :admin_required]
     before_action :admin_required, only: [:manage]
 
 
@@ -23,42 +24,47 @@ class UsersController < ApplicationController
 	end
 
 
+	def load_current_user
+		if session[:user_id]
+			@current_user = User.find(session[:user_id])
+		end
+	end
 
+
+	#Loading info using strong parameters
+	def user_params
+		params.permit(:email, :password, :name, :surname, :phone, :company, :zip, :city, :street, :appartment)
+    end
 
 
 
 	#If everything is good create user. Otherwise show the flash
 	def create_user
-		u = User.new user_params
+		user = User.new user_params
 		
 		# set this field as 0 because it can't be null
-		u.password_encrypted = 0
-		if u.save
-			session[:user_id] = u.id
-			redirect_to u
+		user.password_encrypted = 0
+		if user.save
+			session[:user_id] = user.id
+			redirect_to user
 		else 
 			puts "ERROR >>>>>>>>>>>>>>>>>> #{u.errors.full_messages}"
-			flash[:notice] = u.errors.full_messages
+			flash[:notice] = user.errors.full_messages
 			redirect_to new_user_path
 		end
 
 	end
-
-	#Loading info using strong parameters
-	def user_params
-      params.permit(:email, :password, :name, :surname, :phone, :company, :zip, :city, :street, :appartment)
-    end
 
 
 
 	def authorize
 		encrypted_password = encrypt_password params[:email], params[:password]
 
-		if u = User.find_by_email(params[:email])
-			if encrypted_password == u.password_encrypted
-				puts "Logged as #{u.name}"
-				session[:user_id] = u.id
-				redirect_to u
+		if user = User.find_by_email(params[:email])
+			if encrypted_password == user.password_encrypted
+				puts "Logged as #{user.name}"
+				session[:user_id] = user.id
+				redirect_to user
 			else
 				flash[:notice] = "Wrong password"
 				redirect_to login_path
@@ -79,13 +85,11 @@ class UsersController < ApplicationController
 
 	def edit_password
 
-		current_user = User.find(session[:user_id])
+		encrypted_password = encrypt_password @current_user.email, params[:password]
 
-		encrypted_password = encrypt_password current_user.email, params[:password]
-
-		if encrypted_password == current_user.password_encrypted
-			current_user.password = params[:new_password]
-			if current_user.save
+		if encrypted_password == @current_user.password_encrypted
+			@current_user.password = params[:new_password]
+			if @current_user.save
 				flash[:notice] = "success"
 				redirect_to edit_password_form_path
 			end
@@ -105,9 +109,7 @@ class UsersController < ApplicationController
 		end
 
 		def admin_required
-			if !User(session[:user_id]).admin
-				redirect_to root_path
-			end
+			redirect_to root_path unless @current_user.admin
 		end
 
 
