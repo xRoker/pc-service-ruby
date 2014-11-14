@@ -13,8 +13,7 @@ class User < ActiveRecord::Base
 	def encrypt_password
 		if password.present?
 			#Adding salt based on email and password
-			salt = Digest::SHA1.hexdigest("#{email}#{password}")
-			self.password_encrypted = Digest::SHA1.hexdigest("#{salt}#{password}")
+			self.password_encrypted = AuthorizationService.encrypt_password email, password
 			self.password = nil
 
 		end
