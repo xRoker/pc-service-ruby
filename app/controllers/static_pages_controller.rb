@@ -11,6 +11,8 @@ class StaticPagesController < ApplicationController
 		User.column_names.each do |column|
 			@columns << column unless column_filter.include? column
 		end
+
+		@users = User.all
 	end
 	
 end

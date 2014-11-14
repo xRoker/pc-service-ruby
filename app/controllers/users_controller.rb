@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 
 
-    skip_before_filter :verify_authenticity_token  
+  skip_before_filter :verify_authenticity_token  
 
-    before_action :load_current_user, only: [:manage, :edit_password, :admin_required]
-    before_action :admin_required, only: [:manage]
+  before_action :load_current_user, only: [:manage, :edit_password, :admin_required]
+  before_action :admin_required, only: [:manage]
 
 
 	def new
@@ -14,13 +14,21 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def login
-	end
 
 	def edit_password_form
 	end
 
 	def manage
+	end
+
+
+
+	def login
+	end
+
+	def logout
+		session[:user_id] = nil
+		redirect_to login_path
 	end
 
 
@@ -73,13 +81,6 @@ class UsersController < ApplicationController
 			flash[:notice] = "Can't find #{params[:email]}"
 			redirect_to login_path
 		end
-	end
-
-
-
-	def logout
-		session[:user_id] = nil
-		redirect_to login_path
 	end
 
 

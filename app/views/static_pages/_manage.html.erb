@@ -14,35 +14,37 @@
             </form>
         </div>
     </div>
-	<div class="row list">
-		<div class="col-md-12">
-    	 <table class="table table-list-search">
-                    <thead>
-                        <tr>
-                            <% @columns.each do |column| %>
-                            <th><%= column %></th>
-                            <% end %>
-                        </tr>
-                    </thead>
-                    <tbody>
+    <div class="row list">
+      <div class="col-md-12">
+          <table class="table table-list-search">
+            <thead>
+                <tr>
+                    <% @columns.each do |column| %>
+                    <th><%= column %></th>
+                    <% end %>
+                </tr>
+            </thead>
+            <tbody>
 
-                        <% User.all.each do |user| %>
-                        <tr>
-                            <% @columns.each do |column| %>
-                            <% c = user.send(column) %>
-                            <td>
-                            <% if c.present? %>
-                                <%= c %>
-                            <% else %>
-                            -
-                            <% end %>
-                            </td>
-                            <% end %>
-                        </tr>
+                <% @users.each do |user| %>
+                <tr>
+                    <!-- Iterate through all column names and print their values -->
+                    <% @columns.each do |column| %>
+                    <% value = user.send(column) %>
+                    <td>
+                        <% if value.present? %>
+                        <%= value %>
+                        <% else %>
+                        <!-- In case the value is empty ptint "-" -->
+                        -
                         <% end %>
+                    </td>
+                    <% end %>
+                </tr>
+                <% end %>
 
-                    </tbody>
-                </table>   
-		</div>
-	</div>
+            </tbody>
+        </table>   
+    </div>
+</div>
 </div>
