@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ->
+ready = ->
   activeSystemClass = $(".list-group-item.active")
   
   #something is entered in search form
@@ -38,3 +38,6 @@ $(document).ready ->
     return
 
   return
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
