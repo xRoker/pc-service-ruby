@@ -1,101 +1,65 @@
-<form class="form-horizontal" action='/create_user' method="POST">
-  <fieldset>
-    <div id="legend">
-      <legend class="">Rejestracja</legend>
+<div class="container-fluid">
+  <section class="container">
+    <div class="container-page">    
+      <form role="form" action="/create_user" method="post" id="login-form" autocomplete="off">    
+        <div class="col-md-6">
+          <h3 class="dark-grey">Rejestracja</h3>
+
+          <div class="form-group col-lg-6">
+            <label>Imię</label>
+            <input type="" name="name" class="form-control" id="" value="">
+          </div>
+
+          <div class="form-group col-lg-6">
+            <label>Nazwisko</label>
+            <input type="" name="surname" class="form-control" id="" value="">
+          </div>
+
+          <div class="form-group col-lg-12">
+            <label>Email</label>
+            <input type="" name="email" class="form-control" id="" value="">
+          </div>
+
+          <div class="form-group col-lg-6">
+            <label>Hasło</label>
+            <input type="password" name="password" class="form-control" id="" value="">
+          </div>
+
+          <div class="form-group col-lg-6">
+            <label>Powtórz hasło</label>
+            <input type="password" name="" class="form-control" id="" value="">
+          </div>
+
+
+          <div class="col-sm-6">
+            <input type="checkbox" class="checkbox" />Wyślij powiadomienie na email
+          </div>        
+
+        </div>
+
+        <div class="col-md-6">
+          <h3 class="dark-grey">Zasady i warunki</h3>
+          <p>
+            By clicking on "Register" you agree to The Company's' Terms and Conditions
+          </p>
+          <p>
+            While rare, prices are subject to change based on exchange rate fluctuations - 
+            should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)
+          </p>
+          <p>
+            Should there be an error in the description or pricing of a product, we will provide you with a full refund (Paragraph 13.5.6)
+          </p>
+          <p>
+            Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
+          </p>
+
+          <button type="submit" class="btn btn-primary">Rejestracja</button>
+
+        </div>
+      </form>
+      <% if flash[:notice] %>
+      <div class="alert alert-danger" id="error-alert" role="alert">Rejestracja nie powodła się</div>
+      <% end %>
     </div>
-
-    <row>
-      <div class="col-md-3">
-
-    <div class="control-group">
-      <!-- Name -->
-      <label class="control-label"  for="name">Imię *</label>
-      <div class="controls">
-        <input type="text" id="name" name="name" placeholder="" class="input-xlarge">
-      </div>
-    </div>
-
-    <div class="control-group">
-      <!-- Surame -->
-      <label class="control-label"  for="surname">Nazwisko *</label>
-      <div class="controls">
-        <input type="text" id="surname" name="surname" placeholder="" class="input-xlarge">
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- E-mail -->
-      <label class="control-label" for="email">E-mail *</label>
-      <div class="controls">
-        <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
-        <p class="help-block">Wpisz swój E-mail</p>
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- Password-->
-      <label class="control-label" for="password">Hasło *</label>
-      <div class="controls">
-        <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-        <p class="help-block">Wpisz hasło</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="col-md-3">
-
-    <!-- Adress -->
-    <div class="control-group">
-      <!-- Company -->
-      <label class="control-label"  for="company">Firma</label>
-      <div class="controls">
-        <input type="text" id="company" name="company" placeholder="" class="input-xlarge">
-      </div>
-      <!-- Phone -->
-      <label class="control-label"  for="phone">Telefon</label>
-      <div class="controls">
-        <input type="text" id="phone" name="phone" placeholder="" class="input-xlarge">
-      </div>
-      <!-- Zip -->
-      <label class="control-label"  for="zip">Kod pocztowy</label>
-      <div class="controls">
-        <input type="text" id="zip" name="zip" placeholder="" class="input-xlarge">
-      </div>
-      <!-- City -->
-      <label class="control-label"  for="city">Miejscowość</label>
-      <div class="controls">
-        <input type="text" id="city" name="city" placeholder="" class="input-xlarge">
-      </div>
-      <!-- Street -->
-      <label class="control-label"  for="street">Ulica</label>
-      <div class="controls">
-        <input type="text" id="street" name="street" placeholder="" class="input-xlarge">
-      </div>
-      <!-- Appartment -->
-      <label class="control-label"  for="appartment">Nr. doma i mieszkania</label>
-      <div class="controls">
-        <input type="text" id="appartment" name="appartment" placeholder="" class="input-xlarge">
-      </div>
-
-    </div>
-
-  </div>
-
-  </row>
-
-  <div class="control-group col-md-6">
-    <!-- Button -->
-    <div class="controls">
-      <button type="submit" class="btn btn-success">Rejestracja</button>
-    </div>
-  </div>
-
-
-  </fieldset>
-</form>
-
-<% if flash[:notice] %>
-    <div class="alert alert-danger" id="error-alert" role="alert">Rejestracja nie powodła się</div>
-<% end %>
-
+  </section>
+</div>
