@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112190911) do
+ActiveRecord::Schema.define(version: 20141115122213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: true do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "phone"
+    t.string   "company"
+    t.string   "zip"
+    t.string   "city"
+    t.string   "street"
+    t.string   "apartment"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "requests", force: true do |t|
     t.integer  "user_id"
@@ -26,6 +40,14 @@ ActiveRecord::Schema.define(version: 20141112190911) do
     t.string   "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "surname"
+    t.string   "phone"
+    t.string   "company"
+    t.string   "zip"
+    t.string   "street"
+    t.string   "apartment"
+    t.string   "city"
   end
 
   create_table "users", force: true do |t|
@@ -34,14 +56,8 @@ ActiveRecord::Schema.define(version: 20141112190911) do
     t.boolean  "admin"
     t.string   "name"
     t.string   "surname"
-    t.string   "phone"
-    t.string   "company"
-    t.string   "zip"
-    t.string   "street"
-    t.string   "appartment"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "city"
     t.string   "password_encrypted"
   end
 

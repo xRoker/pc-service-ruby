@@ -41,8 +41,8 @@ class UsersController < ApplicationController
 
 	#Loading info using strong parameters
 	def user_params
-		params.permit(:email, :password, :name, :surname, :phone, :company, :zip, :city, :street, :appartment)
-    end
+		params.permit(:email, :password, :name, :surname)
+  end
 
 
 

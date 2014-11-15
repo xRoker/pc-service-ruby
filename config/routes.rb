@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/edit_password_form' => 'users#edit_password_form'
   post '/edit_password' => 'users#edit_password'
   get '/new_request' => 'requests#new'
+  get '/manage_requests' => 'requests#manage'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

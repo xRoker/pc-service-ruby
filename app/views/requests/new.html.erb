@@ -56,53 +56,67 @@
 
       <!-- Right column -->
 
-      <div class="col-md-3" id="req-right-clm">
+      <div class="col-md-6" id="req-right-clm">
 
         <!-- Adress -->
-        <div class="control-group">
+        <div class = "form-group col-md-12">
+          <label for="select-address">Adres</label>
+          <select id="address-select" class="form-control">
+
+            <% @addresses.each do |address| %>
+            <option>
+              <%= "#{address.name} #{address.surname}, #{address.zip}, #{address.city}, #{address.street} #{address.apartment}, #{address.phone}" %>
+            </option>
+            <% end %>
+
+            <option>Nowy...</option>
+          </select>
+        </div>
+
+
+        <div class="control-group address-block">
 
           <!-- Name -->
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label for="phone">Imię</label>
             <input class="form-control" name="name" value=<%= @user.name %> ></input>
           </div>
-
           <!-- Surname -->
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label for="phone">Nazwisko</label>
             <input class="form-control" name="surname" value=<%= @user.surname %> ></input>
           </div>
 
 
           <!-- Company -->
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label for="company">Firma</label>
-            <input class="form-control" name="company" value=<%= @user.company %> ></input>
+            <input class="form-control" name="company" value="" ></input>
           </div>
           <!-- Phone -->
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label for="phone">Telefon</label>
-            <input class="form-control" name="phone" value=<%= @user.phone %> ></input>
+            <input class="form-control" name="phone" value="" ></input>
           </div>
           <!-- Zip -->
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label for="zip">Kod pocztowy</label>
-            <input class="form-control" name="zip" value=<%= @user.zip %> ></input>
+            <input class="form-control" name="zip" value="" ></input>
           </div>
           <!-- City -->
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label for="city">Miejscowość</label>
-            <input class="form-control" name="city" value=<%= @user.city %> ></input>
+            <input class="form-control" name="city" value="" ></input>
           </div>
           <!-- Street -->
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label for="street">Ulica</label>
-            <input class="form-control" name="street" value=<%= @user.street %> ></input>
+            <input class="form-control" name="street" value="" ></input>
           </div>
           <!-- Apartment -->
-          <div class="form-group">
+          <div class="form-group col-md-6">
             <label for="apartment">Dom/Mieszkanie</label>
-            <input class="form-control" name="appartment" value=<%= @user.appartment %> ></input>
+            <input class="form-control" name="appartment" value"" ></input>
           </div>
 
         </div>

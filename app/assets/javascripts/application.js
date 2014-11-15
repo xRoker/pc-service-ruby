@@ -28,6 +28,19 @@ var main = function () {
     });
 
 
+    if ($("#address-select :selected").val() == "Nowy...") {
+        $('.address-block').show();
+    }
+
+    $('#address-select').change( function(){
+        if ($("#address-select :selected").val() == "Nowy...") {
+            $('.address-block').show();
+        } else {
+            $('.address-block').hide();
+        }
+    })
+
+
 
 }
 
