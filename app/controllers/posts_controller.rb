@@ -37,6 +37,8 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+
+    distribute @post.title, @post.body
   end
 
   # PATCH/PUT /posts/1
@@ -72,5 +74,12 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    # send the post to every subscriber
+    def distribute title, text
+      Subscriber.all.each do |s|
+        NewsMailer.send_news(s.email, title, text).deliver
+      end
     end
 end
