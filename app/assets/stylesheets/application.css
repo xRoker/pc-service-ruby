@@ -177,3 +177,7 @@
     display: none;
 }
 
+#newsblock {
+    margin-left: -10px;
+}
+

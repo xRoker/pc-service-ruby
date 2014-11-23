@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
 
-  resources :users, :requests
-  root to: 'static_pages#home'
+  resources :posts
 
+  resources :users, :requests
+  root to: 'posts#index'
+
+  # User
   post '/create_user' => 'users#create_user'
   get '/login' => 'users#login'
   post '/authorize' => 'users#authorize'
   get '/logout' => 'users#logout'
   get '/edit_password_form' => 'users#edit_password_form'
   post '/edit_password' => 'users#edit_password'
+  get '/manage_users' => 'users#manage'
+
   get '/new_request' => 'requests#new'
   get '/manage_requests' => 'requests#manage'
 
+  # Newsletter subscription
   post '/subscribe' => 'subscribers#subscribe'
   post '/unsubscribe' => 'subscribers#unsubscribe'
 

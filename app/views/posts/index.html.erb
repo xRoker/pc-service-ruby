@@ -1,0 +1,33 @@
+<div class="container-page" id="newsblock">
+
+  <% @posts.each do |post| %> 
+
+  <div class="container">
+    <div class="col-md-12">
+      <h1><%= post.title %></h1>
+      <p><%= post.body %></p>
+      <div>
+        <span class="badge">Posted <%= post.created_at %></span>
+        <div class="pull-right">
+          <span class="label label-success"><%= link_to 'Show', post %></span>
+
+          <% if @admin %>
+          <span class="label label-warning"><%= link_to 'Edit', edit_post_path(post) %></span>
+          <span class="label label-danger"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+          <% end %>
+
+        </div>         
+      </div>      
+    </div>
+  </div>  
+  <% end %>
+
+  <% if @admin %>
+  <div class="container">
+    <div class="col-md-12 pull-right">
+      <%= link_to 'New Post', new_post_path %>
+    </div>
+  </div>
+  <% end %>
+
+</div>
