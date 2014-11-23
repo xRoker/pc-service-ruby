@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get '/new_request' => 'requests#new'
   get '/manage_requests' => 'requests#manage'
 
+  post '/subscribe' => 'subscribers#subscribe'
+  post '/unsubscribe' => 'subscribers#unsubscribe'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

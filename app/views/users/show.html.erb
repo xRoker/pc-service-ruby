@@ -1,1 +1,7 @@
 <h1>Witam, <%= @user.name %>!</h1>
+
+<div class="checkbox">
+    <label>
+      <input type="checkbox" <% if @subscribed %> checked <% end %> id="subscribe-box" > Podpisać się na newsletter!
+    </label>
+</div>
