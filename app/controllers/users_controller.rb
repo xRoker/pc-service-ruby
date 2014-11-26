@@ -50,19 +50,28 @@ class UsersController < ApplicationController
 
 	#Loading info using strong parameters
 	def user_params
-		params.permit(:email, :password, :name, :surname)
+		params.permit(:email, :password, :name, :surname, :notify)
   end
 
 
 
 	#If everything is good create user. Otherwise show the flash
 	def create_user
-		user = User.new user_params
+		user = User.new
+		user.email = user_params[:email]
+		user.password = user_params[:password]
+		user.name = user_params[:name]
+		user.surname = user_params[:surname]
 		
 		# set this field as 0 because it can't be null
 		user.password_encrypted = 0
 		if user.save
 			session[:user_id] = user.id
+
+			if user_params[:notify]
+				NewsMailer.registration(user).deliver
+			end
+
 			redirect_to user
 		else 
 			puts "ERROR >>>>>>>>>>>>>>>>>> #{u.errors.full_messages}"
