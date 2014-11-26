@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/new_request' => 'requests#new'
   get '/manage_requests' => 'requests#manage'
+  post '/create_request' => 'requests#create'
 
   # Newsletter subscription
   post '/subscribe' => 'subscribers#subscribe'

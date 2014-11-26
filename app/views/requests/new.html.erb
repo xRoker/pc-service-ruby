@@ -1,6 +1,18 @@
 <div class="user_list">
 
-  <form role="form">
+  <row>
+    <div class=="form-group col-md-12">
+      <% if flash[:success] %>
+      <div class="alert alert-success" role="alert">Zgłoszenie zostało przyjęte</div>
+      <% end %>
+
+      <% if flash[:fail] %>
+      <div class="alert alert-danger" role="alert">Błąd. Zgłoszenie zostało odrzucone</div>
+      <% end %>
+    </div>
+  </row>
+
+  <form role="form" action="/create_request" method="post" id="request-form" autocomplete="off">
 
     <row>
 
@@ -9,7 +21,7 @@
 
         <div class = "form-group">
           <label for="device-type">Typ sprzętu</label>
-          <select class="form-control">
+          <select name="device_type" class="form-control">
             <option>Laptop</option>
             <option>Smartphone</option>
             <option>Desktop</option>
@@ -21,13 +33,13 @@
         </div>
         <div class="form-group">
           <label for="description">Opis</label>
-          <textarea class="form-control" rows="8"></textarea>
+          <textarea name="description" class="form-control" rows="8"></textarea>
         </div>
         <row>
           <div class="col-md-6">
             <div class="checkbox">
               <label>
-                <input type="checkbox"> Gwarancja
+                <input name="warranty" type="checkbox"> Gwarancja
               </label>
             </div>
           </div>
@@ -35,7 +47,7 @@
             <label for="priority">Priorytet:</label>
           </div>
           <div class="col-md-4">
-            <select class="form-control" name:"priority">
+            <select name="priority" class="form-control">
               <option>Niski</option>
               <option>Wysoki</option>
               <option>Awaryjny</option>
@@ -61,10 +73,10 @@
         <!-- Adress -->
         <div class = "form-group col-md-12">
           <label for="select-address">Adres</label>
-          <select id="address-select" class="form-control">
+          <select id="address-select" name="address_select" class="form-control">
 
             <% @addresses.each do |address| %>
-            <option>
+            <option value = <%= address.id %> >
               <%= "#{address.name} #{address.surname}, #{address.zip}, #{address.city}, #{address.street} #{address.apartment}, tel. #{address.phone}" %>
             </option>
             <% end %>
@@ -116,12 +128,13 @@
           <!-- Apartment -->
           <div class="form-group col-md-6">
             <label for="apartment">Dom/Mieszkanie</label>
-            <input class="form-control" name="appartment" value"" ></input>
+            <input class="form-control" name="apartment" value"" ></input>
           </div>
 
         </div>
 
       </div>
+
     </row>
 
   </form>
