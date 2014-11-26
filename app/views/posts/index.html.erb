@@ -3,7 +3,7 @@
   <% @posts.each do |post| %> 
 
   <div class="container">
-    <div class="col-md-12">
+    <div class="col-md-11">
       <h1><%= post.title %></h1>
       <p><%= post.body %></p>
       <div>
@@ -24,7 +24,7 @@
 
   <% if @admin %>
   <div class="container">
-    <div class="col-md-12 pull-right">
+    <div class="col-md-11 pull-right">
       <%= link_to 'New Post', new_post_path %>
     </div>
   </div>

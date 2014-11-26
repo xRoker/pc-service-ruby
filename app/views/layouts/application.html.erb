@@ -2,12 +2,12 @@
 <html>
 
 <head>
-<title>Firma usługowa</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Firma usługowa</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 
 </head>
 
@@ -22,14 +22,14 @@
 
 
 		<row>
-		<nav role="navigation" class="navbar navbar-default">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" data-target="#navbarCollapse"
+			<nav role="navigation" class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" data-target="#navbarCollapse"
 					data-toggle="collapse" class="navbar-toggle">
 					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
 				</button>
 			</div>
 			<!-- Collection of nav links, forms, and other content for toggling -->
@@ -46,43 +46,122 @@
 				<!-- The right login button -->
 
 				<% if session[:user_id] %>
-								<ul class="user-profile nav navbar-nav navbar-right">
+				<ul class="user-profile nav navbar-nav navbar-right">
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#" id="user-menu"><%= User.find(session[:user_id]).name %><b
-							class="caret"></b></a>
+						class="caret"></b></a>
 						<ul role="menu" class="dropdown-menu">
 							<li><%= link_to 'Profil', User.find(session[:user_id]) %></li>
 							<li><%= link_to 'Zmiana hasła', edit_password_form_path %></li>
 							<li><%= link_to 'Wyloguj się', logout_path %></li>
 						</ul></li>
-				</ul>
+					</ul>
 
-				<% else %>
-				<ul class="login nav navbar-nav navbar-right">
-					<li class="dropdown"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#">Login <b class="caret"></b></a>
-						<ul role="menu" class="dropdown-menu">
-							<li><%= link_to 'Logowanie', login_path %></li>
-							<li><a href="#">Zalogujsię jako gość</a></li>
-							<li><a href="#">Przypomnienie hasła</a></li>
-							<li><%= link_to 'Rejestracja', new_user_path %></li>
-						</ul></li>
-				</ul>
+					<% else %>
+					<ul class="login nav navbar-nav navbar-right">
+						<li class="dropdown"><a data-toggle="dropdown"
+							class="dropdown-toggle" href="#">Login <b class="caret"></b></a>
+							<ul role="menu" class="dropdown-menu">
+								<li><%= link_to 'Logowanie', login_path %></li>
+								<li><a href="#">Zalogujsię jako gość</a></li>
+								<li><a href="#">Przypomnienie hasła</a></li>
+								<li><%= link_to 'Rejestracja', new_user_path %></li>
+							</ul></li>
+						</ul>
 
-				<% end %>
+						<% end %>
 
 
+					</div>
+				</nav>
+			</row>
+
+			<%= yield %>
+
+			<% session.to_hash %>
+
+		</div>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<footer>
+			<div class="footer" id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+							<h3> Lorem Ipsum </h3>
+							<ul>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+							</ul>
+						</div>
+						<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+							<h3> Lorem Ipsum </h3>
+							<ul>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+							</ul>
+						</div>
+						<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+							<h3> Lorem Ipsum </h3>
+							<ul>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+							</ul>
+						</div>
+						<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+							<h3> Lorem Ipsum </h3>
+							<ul>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+								<li> <a href="#"> Lorem Ipsum </a> </li>
+							</ul>
+						</div>
+						<div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+							<h3> Lorem Ipsum </h3>
+							<ul>
+								<li>
+									<div class="input-append newsletter-box text-center">
+										<input type="text" class="full text-center" placeholder="Email ">
+										<button class="btn  bg-gray" type="button"> Lorem ipsum <i class="fa fa-long-arrow-right"> </i> </button>
+									</div>
+								</li>
+							</ul>
+							<ul class="social">
+								<li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+								<li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+								<li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+								<li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+							</ul>
+						</div>
+					</div>
+					<!--/.row--> 
+				</div>
+				<!--/.container--> 
 			</div>
-		</nav>
-		</row>
-		
-		<%= yield %>
+			<!--/.footer-->
 
-		<% session.to_hash %>
+			<div class="footer-bottom">
+				<div class="container">
+					<p class="pull-left"> Copyright © Footer E-commerce Plugin 2014. All right reserved. </p>
+					<div class="pull-right">
+						<ul class="nav nav-pills payments">
+							<li><i class="fa fa-cc-visa"></i></li>
+							<li><i class="fa fa-cc-mastercard"></i></li>
+							<li><i class="fa fa-cc-amex"></i></li>
+							<li><i class="fa fa-cc-paypal"></i></li>
+						</ul> 
+					</div>
+				</div>
+			</div>
+			<!--/.footer-bottom--> 
+		</footer>
 
-	</div>
+	</body>
 
-
-</body>
-
-</html>
+	</html>
