@@ -21,7 +21,7 @@
 
         <div class = "form-group">
           <label for="device-type">Typ sprzętu</label>
-          <select name="device_type" class="form-control">
+          <select name="request[device_type]" class="form-control">
             <option>Laptop</option>
             <option>Smartphone</option>
             <option>Desktop</option>
@@ -29,17 +29,17 @@
         </div>
         <div class="form-group">
           <label for="model">Model</label>
-          <input class="form-control" name="model" placeholder="Nazwa modelu"></input>
+          <input class="form-control" name="request[model]" placeholder="Nazwa modelu"></input>
         </div>
         <div class="form-group">
           <label for="description">Opis</label>
-          <textarea name="description" class="form-control" rows="8"></textarea>
+          <textarea name="request[description]" class="form-control" rows="8"></textarea>
         </div>
         <row>
           <div class="col-md-6">
             <div class="checkbox">
               <label>
-                <input name="warranty" type="checkbox"> Gwarancja
+                <input name="request[warranty]" type="checkbox"> Gwarancja
               </label>
             </div>
           </div>
@@ -47,7 +47,7 @@
             <label for="priority">Priorytet:</label>
           </div>
           <div class="col-md-4">
-            <select name="priority" class="form-control">
+            <select name="request[priority]" class="form-control">
               <option>Niski</option>
               <option>Wysoki</option>
               <option>Awaryjny</option>
@@ -90,45 +90,45 @@
 
           <!-- Name -->
           <div class="form-group col-md-6">
-            <label for="phone">Imię</label>
-            <input class="form-control" name="name" value=<%= @user.name %> ></input>
+            <label>Imię</label>
+            <input class="form-control" name="address[name]" value=<%= @user.name %> ></input>
           </div>
           <!-- Surname -->
           <div class="form-group col-md-6">
-            <label for="phone">Nazwisko</label>
-            <input class="form-control" name="surname" value=<%= @user.surname %> ></input>
+            <label>Nazwisko</label>
+            <input class="form-control" name="address[surname]" value=<%= @user.surname %> ></input>
           </div>
 
 
           <!-- Company -->
           <div class="form-group col-md-6">
             <label for="company">Firma</label>
-            <input class="form-control" name="company" value="" ></input>
+            <input class="form-control" name="address[company]" value="" ></input>
           </div>
           <!-- Phone -->
           <div class="form-group col-md-6">
             <label for="phone">Telefon</label>
-            <input class="form-control" name="phone" value="" ></input>
+            <input class="form-control" name="address[phone]" value="" ></input>
           </div>
           <!-- Zip -->
           <div class="form-group col-md-6">
             <label for="zip">Kod pocztowy</label>
-            <input class="form-control" name="zip" value="" ></input>
+            <input class="form-control" name="address[zip]" value="" ></input>
           </div>
           <!-- City -->
           <div class="form-group col-md-6">
             <label for="city">Miejscowość</label>
-            <input class="form-control" name="city" value="" ></input>
+            <input class="form-control" name="address[city]" value="" ></input>
           </div>
           <!-- Street -->
           <div class="form-group col-md-6">
             <label for="street">Ulica</label>
-            <input class="form-control" name="street" value="" ></input>
+            <input class="form-control" name="address[street]" value="" ></input>
           </div>
           <!-- Apartment -->
           <div class="form-group col-md-6">
             <label for="apartment">Dom/Mieszkanie</label>
-            <input class="form-control" name="apartment" value"" ></input>
+            <input class="form-control" name="address[apartment]" value"" ></input>
           </div>
 
         </div>
