@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 
 			redirect_to user
 		else 
-			puts "ERROR >>>>>>>>>>>>>>>>>> #{u.errors.full_messages}"
+			puts "ERROR >>>>>>>>>>>>>>>>>> #{user.errors.full_messages}"
 			flash[:notice] = user.errors.full_messages
 			redirect_to new_user_path
 		end

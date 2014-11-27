@@ -31,6 +31,8 @@ gem 'autoprefixer-rails'
 
 gem 'jquery-turbolinks'
 gem "figaro", "~> 0.7.0"
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

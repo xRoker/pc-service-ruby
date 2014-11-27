@@ -1,3 +1,4 @@
+require 'distribute'
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -78,8 +79,7 @@ class PostsController < ApplicationController
 
     # send the post to every subscriber
     def distribute title, text
-      Subscriber.all.each do |s|
-        NewsMailer.send_news(s.email, title, text).deliver
-      end
+      Delayed::Job.enqueue(Distribute.new title, text)
     end
+
 end
