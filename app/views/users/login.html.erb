@@ -5,7 +5,7 @@
                 <div class="col-xs-12">
                     <div class="form-wrap">
                         <h1>Logowanie do serwisu</h1>
-                        <form role="form" action="/users/authorize" method="post" id="login-form" autocomplete="off">
+                        <form role="form" action=<%= authorize_users_path %> method="post" id="login-form" autocomplete="off">
                             <div class="form-group">
                                 <label class="sr-only">Email użytkownika</label>
                                 <input name="email" id="email" class="form-control" placeholder="email">
