@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   before_action :load_current_user, only: [:manage, :edit_password, :admin_required]
   before_action :admin_required, only: [:manage]
 
+####################### Pages ##########################
 
 	def new
 	end
@@ -37,26 +38,16 @@ class UsersController < ApplicationController
 
 	def logout
 		session[:user_id] = nil
-		redirect_to login_path
+		redirect_to login_users_path
 	end
 
 
-	def load_current_user
-		if session[:user_id]
-			@current_user = User.find(session[:user_id])
-		end
-	end
-
-
-	#Loading info using strong parameters
-	def user_params
-		params.require(:user).permit(:email, :password, :name, :surname)
-  end
+	############################ inner logic ############################
 
 
 
 	#If everything is good create user. Otherwise show the flash
-	def create_user
+	def create
 		user = User.new user_params
 		
 		# set this field as 0 because it can't be null
@@ -89,11 +80,11 @@ class UsersController < ApplicationController
 				redirect_to user
 			else
 				flash[:notice] = "Wrong password"
-				redirect_to login_path
+				redirect_to login_users_path
 			end
 		else 
 			flash[:notice] = "Can't find #{params[:email]}"
-			redirect_to login_path
+			redirect_to login_users_path
 		end
 	end
 
@@ -106,16 +97,30 @@ class UsersController < ApplicationController
 			@current_user.password = params[:new_password]
 			if @current_user.save
 				flash[:notice] = "success"
-				redirect_to edit_password_form_path
+				redirect_to edit_password_form_users_path
 			end
 		else
 			flash[:notice] = "wrong"
-			redirect_to edit_password_form_path
+			redirect_to edit_password_form_users_path
 		end
 	end
 
 
 	private
+
+
+
+		def load_current_user
+			if session[:user_id]
+				@current_user = User.find(session[:user_id])
+			end
+		end
+
+
+		#Loading info using strong parameters
+		def user_params
+			params.require(:user).permit(:email, :password, :name, :surname)
+	  end
 
 		def encrypt_password email, password
 			#Encrypt the passed password and compare with the one in DB

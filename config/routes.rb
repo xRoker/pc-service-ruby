@@ -1,22 +1,27 @@
 Rails.application.routes.draw do
 
-  resources :posts
-
-  resources :users, :requests
   root to: 'posts#index'
 
-  # User
-  post '/create_user' => 'users#create_user'
-  get '/login' => 'users#login'
-  post '/authorize' => 'users#authorize'
-  get '/logout' => 'users#logout'
-  get '/edit_password_form' => 'users#edit_password_form'
-  post '/edit_password' => 'users#edit_password'
-  get '/manage_users' => 'users#manage'
+  resources :users do
+    collection do
+      post 'create'
+      get 'login'
+      post 'authorize'
+      get 'logout'
+      get 'edit_password_form'
+      post 'edit_password'
+      get 'manage'
+    end
+  end
 
-  get '/new_request' => 'requests#new'
-  get '/manage_requests' => 'requests#manage'
-  post '/create_request' => 'requests#create'
+  resources :requests do
+    collection do
+      post 'create'
+    end
+  end
+
+
+  resources :posts
 
   # Newsletter subscription
   post '/subscribe' => 'subscribers#subscribe'

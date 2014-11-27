@@ -34,14 +34,9 @@ class RequestsController < ApplicationController
       redirect_to new_request_path
   end
 
-
-  def manage
-    
-  end
-
   private
 
-  
+
     def address_params
       params.require(:address).permit(:name, :surname, :phone, :company, :zip, :city, :aprtment)
     end

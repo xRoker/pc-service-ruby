@@ -52,8 +52,8 @@
 						class="caret"></b></a>
 						<ul role="menu" class="dropdown-menu">
 							<li><%= link_to 'Profil', User.find(session[:user_id]) %></li>
-							<li><%= link_to 'Zmiana hasła', edit_password_form_path %></li>
-							<li><%= link_to 'Wyloguj się', logout_path %></li>
+							<li><%= link_to 'Zmiana hasła', edit_password_form_users_path %></li>
+							<li><%= link_to 'Wyloguj się', logout_users_path %></li>
 						</ul></li>
 					</ul>
 
@@ -62,7 +62,7 @@
 						<li class="dropdown"><a data-toggle="dropdown"
 							class="dropdown-toggle" href="#">Login <b class="caret"></b></a>
 							<ul role="menu" class="dropdown-menu">
-								<li><%= link_to 'Logowanie', login_path %></li>
+								<li><%= link_to 'Logowanie', login_users_path %></li>
 								<li><a href="#">Zalogujsię jako gość</a></li>
 								<li><a href="#">Przypomnienie hasła</a></li>
 								<li><%= link_to 'Rejestracja', new_user_path %></li>
