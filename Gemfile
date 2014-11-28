@@ -34,17 +34,6 @@ gem "figaro", "~> 0.7.0"
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 
-group :development, :test do
-  gem 'rspec-rails' 
-  gem 'factory_girl_rails' 
-end 
-group :test do 
-  gem 'faker' 
-  gem 'capybara' 
-  gem 'guard-rspec' 
-  gem 'launchy' 
-end
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
