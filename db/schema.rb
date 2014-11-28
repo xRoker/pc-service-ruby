@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127162117) do
+ActiveRecord::Schema.define(version: 20141128100141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(version: 20141127162117) do
   end
 
   create_table "subscribers", force: true do |t|
-    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20141127162117) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_encrypted"
+    t.integer  "gender"
   end
 
 end
