@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	#DB relation
 	has_many :requests
+	belongs_to :subscriber, dependent: :destroy
 
 	#Validate presence and uniqueness of some paraters
 	validates :email, presence: true, uniqueness: true

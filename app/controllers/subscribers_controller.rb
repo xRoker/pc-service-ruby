@@ -3,12 +3,12 @@ class SubscribersController < ApplicationController
   before_action :load_user
 
   def subscribe
-    Subscriber.subscribe @user.email
+    Subscriber.subscribe @user.id
     redirect_to @user
   end
 
   def unsubscribe
-    Subscriber.unsubscribe @user.email
+    Subscriber.unsubscribe @user.id
     redirect_to @user
   end
 

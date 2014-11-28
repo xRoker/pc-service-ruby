@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@subscribed = Subscriber.subscribed? @user.email
+		@subscribed = Subscriber.subscribed? @user
 	end
 
 
@@ -113,6 +113,10 @@ class UsersController < ApplicationController
 		def load_current_user
 			if session[:user_id]
 				@current_user = User.find(session[:user_id])
+			rescue
+				# Logout if there is unexisting user in the session
+				session[:user_id] = nil
+			end
 			end
 		end
 
