@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 	#Encrypt password before saving
 	before_save :encrypt_password
 
+	enum gender: [:male, :female]
 
 	def encrypt_password
 		if password.present?
