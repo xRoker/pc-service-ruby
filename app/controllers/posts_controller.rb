@@ -7,7 +7,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    @admin = User.find(session[:user_id]).admin unless !session[:user_id]
+    if session[:user_id]
+      user = load_user
+      puts ">>>>>>>>>>>>>>>>>>>>#{user}"
+      @admin = user.admin unless !user
+    end
   end
 
   # GET /posts/1
@@ -80,6 +84,16 @@ class PostsController < ApplicationController
     # send the post to every subscriber
     def distribute title, text
       Delayed::Job.enqueue(Distribute.new title, text)
+    end
+
+    def load_user
+      begin
+        User.find(session[:user_id])
+      rescue Exception => e
+        puts e.message
+        session[:user_id] = nil
+        nil
+      end
     end
 
 end
