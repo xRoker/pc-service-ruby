@@ -33,6 +33,7 @@ gem 'jquery-turbolinks'
 gem "figaro", "~> 0.7.0"
 gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem 'hirb'
 
 group :development, :test do
   gem 'rspec-rails' 

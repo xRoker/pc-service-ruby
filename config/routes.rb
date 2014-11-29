@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :requests do
     collection do
-      post 'create'
+      get 'manage'
     end
   end
 

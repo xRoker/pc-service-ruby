@@ -39,7 +39,7 @@
 					<li><%= link_to 'Użytkownicy', manage_users_path %></li>
 					<li><%= link_to 'Zgłoszenie usługi', new_request_path %></li>
 					<li><a href="#">Monitoring realizacji</a></li>
-					<li><a href="#">Usługi oczekujące na realizację</a></li>
+					<li><%= link_to 'Usługi oczekujące na realizację', manage_requests_path %></li>
 
 				</ul>
 
@@ -76,7 +76,9 @@
 				</nav>
 			</row>
 
-			<%= yield %>
+			<div class = "container">
+				<%= yield %>
+			</div>
 
 			<% session.to_hash %>
 

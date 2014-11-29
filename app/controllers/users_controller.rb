@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@subscribed = Subscriber.subscribed? @user
+		@subscribed = @user.subscriber
 	end
 
 

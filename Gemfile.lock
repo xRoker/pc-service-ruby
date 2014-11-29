@@ -80,6 +80,7 @@ GEM
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     hike (1.2.3)
+    hirb (0.7.2)
     hitimes (1.2.2)
     i18n (0.6.11)
     jbuilder (2.2.4)
@@ -206,6 +207,7 @@ DEPENDENCIES
   faker
   figaro (~> 0.7.0)
   guard-rspec
+  hirb
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

@@ -1,5 +1,5 @@
 class Subscriber < ActiveRecord::Base
-  has_one :user
+  belongs_to :user
 
   #Validate presence and uniqueness of email
   validates :user_id, presence: true, uniqueness: true

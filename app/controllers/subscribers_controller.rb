@@ -3,7 +3,7 @@ class SubscribersController < ApplicationController
   before_action :load_user
 
   def subscribe
-    Subscriber.subscribe @user.id
+    @user.create_subscriber
     redirect_to @user
   end
 

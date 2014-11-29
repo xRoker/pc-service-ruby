@@ -2,7 +2,12 @@ class RequestsController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
 
-  before_action :let_signed_only 
+  before_action :let_signed_only
+
+
+  def manage
+    @requests = Request.all
+  end
 
 	def new
     @addresses = Address.where(user_id: @user.id)
@@ -49,7 +54,7 @@ class RequestsController < ApplicationController
       if session[:user_id]
         @user = User.find(session[:user_id])
       else
-        redirect_to login_path 
+        redirect_to login_users_path 
       end
     end
 	
