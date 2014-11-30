@@ -1,40 +1,57 @@
 <div class="container">
 
-        <div class="col-md-11">
-         <table class="table table-list-search">
+    <div class="col-md-11">
 
-                    <thead>
-                        <tr>
-                            <th>Typ</th>
-                            <th>Model</th>
-                            <th>Opis</th>
-                            <th>Gwarancja</th>
-                            <th>Priorytet</th>
-                            <th>Pracownik</th>
-                            <th>Data przyjęcia</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @requests.each do |request| %>
-                        <tr>
-                            <td><%= request.device_type %></td>
-                            <td><%= request.model %></td>
-                            <td><%= request.description %></td>
-                            <td><%= request.warranty %></td>
-                            <td><%= request.priority %></td>
-                            <% if request.service %>
-                            <td><%= request.service.user.name %></td>
-                            <td><%= request.service.created_at %></td>
-                            <% else %>
-                            <td> - </td>
-                            <td> - </td>
-                            <% end %>
-                            <td><%= button_to "Przyjąć", accept_request_path(request), id: "accept-btn",
-                            :class => "btn btn-primary", method: :post %></td>
-                        </tr>
-                        <% end %>
-                    </tbody>
-                </table>   
-        </div>
-    </div>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#">Oczekujące</a></li>
+          <li role="presentation"><a href="#">Przyjęte</a></li>
+      </ul>
+
+        <table class="table" id="request-list">
+            <thead>
+                <tr>
+                    <th>Typ</th>
+                    <th>Model</th>
+                    <th>Opis</th>
+                    <th>Gwarancja</th>
+                    <th>Priorytet</th>
+<!--                     <th>Pracownik</th>
+                    <th>Data przyjęcia</th> -->
+                </tr>
+            </thead>
+        </tr>
+
+        <% @requests.each do |request| %>
+        <tr data-toggle="collapse" data-target="#collapseme" data-value = <%= request.id %>>
+            <td><%= request.device_type %></td>
+            <td><%= request.model %></td>
+            <td><%= truncate request.description, length: 50 %></td>
+            
+            <% if request.warranty %>
+            <td><i class="glyphicon glyphicon-ok"></i></td>
+            <% else %>
+            <td><i class="glyphicon glyphicon-remove"></i></td>
+            <% end %>
+
+            <td><%= request.priority %></td>
+<!--             <% if request.service %>
+            <td><%= request.service.user.name %> <%= request.service.user.surname %></td>
+            <td><%= request.service.created_at.strftime '%d %b %H:%M' %></td>
+            <% else %>
+            <td> - </td>
+            <td> - </td>
+            <% end %> -->
+            <td><%= button_to "Przyjąć", accept_request_path(request), id: "accept-btn",
+            :class => "btn btn-primary", method: :post %></td>
+        </tr>
+
+        <tr class="collapse out" id="block<%= request.id %>">
+            <td colspan="3"><%= request.description %></td>
+            <% address = request.address %>
+            <td colspan="3"><%= "#{address.name} #{address.surname}, #{address.zip}, #{address.city}, #{address.street} #{address.apartment}, tel. #{address.phone}" %></td>
+        </tr>
+
+        <% end %>
+    </table>
+</div>
 </div>
