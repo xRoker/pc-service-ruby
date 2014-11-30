@@ -2,10 +2,10 @@
 
     <div class="col-md-11">
 
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#">Oczekujące</a></li>
-          <li role="presentation"><a href="#">Przyjęte</a></li>
-      </ul>
+        <ul class="nav nav-tabs" id = "request-tabs">
+          <li id="pending-tab" class="active"><a>Oczekujące</a></li>
+          <li id="accepted-tab"><a>Przyjęte</a></li>
+        </ul>
 
         <table class="table" id="request-list">
             <thead>
@@ -19,21 +19,49 @@
                     <th>Data przyjęcia</th> -->
                 </tr>
             </thead>
-        </tr>
 
-        <% @requests.each do |request| %>
-        <tr data-toggle="collapse" data-target="#collapseme" data-value = <%= request.id %>>
-            <td><%= request.device_type %></td>
-            <td><%= request.model %></td>
-            <td><%= truncate request.description, length: 50 %></td>
-            
-            <% if request.warranty %>
-            <td><i class="glyphicon glyphicon-ok"></i></td>
-            <% else %>
-            <td><i class="glyphicon glyphicon-remove"></i></td>
+
+            <!-- Pending requests -->
+            <% @requests.pending.each do |request| %>
+            <tr class = "pending" data-toggle="collapse" data-target="#collapseme" data-value = <%= request.id %>>
+                <td><%= request.device_type %></td>
+                <td><%= request.model %></td>
+                <td><%= truncate request.description, length: 50 %></td>
+
+                <% if request.warranty %>
+                <td><i class="glyphicon glyphicon-ok"></i></td>
+                <% else %>
+                <td><i class="glyphicon glyphicon-remove"></i></td>
+                <% end %>
+
+                <td><%= request.priority %></td>
+                <td><%= button_to "Przyjąć", accept_request_path(request), id: "accept-btn",
+                :class => "btn btn-primary", method: :post %></td>
+            </tr>
+
+            <tr class="collapse out" id="block<%= request.id %>">
+                <td colspan="3"><%= request.description %></td>
+                <% address = request.address %>
+                <td colspan="3"><%= "#{address.name} #{address.surname}, #{address.zip}, #{address.city}, #{address.street} #{address.apartment}, tel. #{address.phone}" %></td>
+            </tr>
+
             <% end %>
 
-            <td><%= request.priority %></td>
+
+        <!-- Acceted requests -->
+            <% @accepted_requests.each do |request| %>
+            <tr class="accepted" data-toggle="collapse" data-target="#collapseme" data-value = <%= request.id %>>
+                <td><%= request.device_type %></td>
+                <td><%= request.model %></td>
+                <td><%= truncate request.description, length: 50 %></td>
+
+                <% if request.warranty %>
+                <td><i class="glyphicon glyphicon-ok"></i></td>
+                <% else %>
+                <td><i class="glyphicon glyphicon-remove"></i></td>
+                <% end %>
+
+                <td><%= request.priority %></td>
 <!--             <% if request.service %>
             <td><%= request.service.user.name %> <%= request.service.user.surname %></td>
             <td><%= request.service.created_at.strftime '%d %b %H:%M' %></td>
@@ -41,8 +69,8 @@
             <td> - </td>
             <td> - </td>
             <% end %> -->
-            <td><%= button_to "Przyjąć", accept_request_path(request), id: "accept-btn",
-            :class => "btn btn-primary", method: :post %></td>
+            <td><%= button_to "Rezygn.", decline_request_path(request), id: "accept-btn",
+            :class => "btn btn-danger", method: :post %></td>
         </tr>
 
         <tr class="collapse out" id="block<%= request.id %>">
@@ -52,6 +80,7 @@
         </tr>
 
         <% end %>
+
     </table>
 </div>
 </div>

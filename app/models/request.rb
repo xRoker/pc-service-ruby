@@ -5,4 +5,9 @@ class Request < ActiveRecord::Base
 	validates_presence_of :user_id, :address_id,
    :device_type, :model, :description, :priority
   validates :warranty, inclusion: [true, false]
+
+  # Get all unprocessed requests
+  scope :pending, -> { includes(:service).where(services: { request_id: nil }) }
+  # Get all accepted requests
+  scope :accepted, -> { includes(:service).where.not(services: { request_id: nil }) }
 end

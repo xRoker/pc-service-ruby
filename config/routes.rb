@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
     member do
       post 'accept'
+      post 'decline'
     end
   end
 
