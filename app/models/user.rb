@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	#DB relation
+	has_many :services
 	has_many :requests
 	has_one :subscriber, dependent: :destroy
 

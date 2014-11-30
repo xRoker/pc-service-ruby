@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
 
 
   def manage
-    @requests = Request.all
+    @requests = Request.includes(:service).all
   end
 
 	def new
@@ -37,6 +37,13 @@ class RequestsController < ApplicationController
       else flash[:fail] = true
       end
       redirect_to new_request_path
+  end
+
+  def accept
+    service = Request.find(params[:id]).create_service
+    service.user = @user
+    service.save
+    redirect_to manage_requests_path
   end
 
   private

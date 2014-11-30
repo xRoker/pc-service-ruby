@@ -1,6 +1,6 @@
 <div class="container">
 
-        <div class="col-md-9">
+        <div class="col-md-11">
          <table class="table table-list-search">
 
                     <thead>
@@ -10,6 +10,8 @@
                             <th>Opis</th>
                             <th>Gwarancja</th>
                             <th>Priorytet</th>
+                            <th>Pracownik</th>
+                            <th>Data przyjęcia</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -20,6 +22,15 @@
                             <td><%= request.description %></td>
                             <td><%= request.warranty %></td>
                             <td><%= request.priority %></td>
+                            <% if request.service %>
+                            <td><%= request.service.user.name %></td>
+                            <td><%= request.service.created_at %></td>
+                            <% else %>
+                            <td> - </td>
+                            <td> - </td>
+                            <% end %>
+                            <td><%= button_to "Przyjąć", accept_request_path(request), id: "accept-btn",
+                            :class => "btn btn-primary", method: :post %></td>
                         </tr>
                         <% end %>
                     </tbody>
