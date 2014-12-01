@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
 
   resources :posts
+  resources :services
 
   # Newsletter subscription
   post '/subscribe' => 'subscribers#subscribe'

@@ -74,9 +74,45 @@
         </tr>
 
         <tr class="collapse out" id="block<%= request.id %>">
-            <td colspan="3"><%= request.description %></td>
-            <% address = request.address %>
-            <td colspan="3"><%= "#{address.name} #{address.surname}, #{address.zip}, #{address.city}, #{address.street} #{address.apartment}, tel. #{address.phone}" %></td>
+            <td colspan="3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= form_for request.service, url: service_path(request.service.id), method: :put do |f| %>
+                        <%= f.label "Uwagi" %><br/>
+                        <%= f.text_area :notes, size: "30x3", class: "form-control" %><br/>
+                        <%= f.label "Termin realizacji" %><br/>
+                        <%= f.date_select :expected_term, class: "form-control" %><br/>
+                        <%= f.label "Cena" %><br/>
+                        <%= f.number_field :cost, class:"form-control" %><br/>
+                    </div>
+
+                    <div class="col-md-6">
+                        <%= f.label "Stan realizacji" %><br/>
+                        <%= f.radio_button :status, 0, checked: (request.service.status == "accepted") %>
+                        <%= f.label "Przyjęte" %><br/>
+                        <%= f.radio_button :status, 1, checked: (request.service.status == "analized") %>
+                        <%= f.label "W trakcie analizy" %><br/>
+                        <%= f.radio_button :status, 2, checked: (request.service.status == "done") %>
+                        <%= f.label "Zrealizowane" %><br/>
+                        <%= f.radio_button :status, 3, checked: (request.service.status == "verified") %>
+                        <%= f.label "Zweryfikowane" %><br/>
+                        <%= f.radio_button :status, 4, checked: (request.service.status == "closed") %>
+                        <%= f.label "Zamknięte" %><br/><br/>
+                        <%= f.submit "Zapisać", :class => "btn btn-info" %>
+                        <% end %>
+                    </div>
+                </div>
+            </td>
+
+            <td colspan="3">
+                <div class = "info-column">
+                <b>Adres</b><br/>
+                <% address = request.address %>
+                <%= "#{address.name} #{address.surname}, #{address.zip}, #{address.city}, #{address.street} #{address.apartment}, tel. #{address.phone}" %><br/>
+                <b>Opis problemu</b><br/>
+                <%= request.description %>
+            </div>
+            </td>
         </tr>
 
         <% end %>

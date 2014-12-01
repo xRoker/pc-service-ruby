@@ -8,6 +8,8 @@ class RequestsController < ApplicationController
   def manage
     @requests = Request.includes(:service).all
     @accepted_requests = Request.accepted.where(services: {user_id: @user.id})
+
+    @new_service = Service.new
   end
 
 	def new
@@ -41,7 +43,7 @@ class RequestsController < ApplicationController
   end
 
   def accept
-    @service = Request.find(params[:id]).create_service
+    service = Request.find(params[:id]).create_service
     service.user = @user
     service.save
     redirect_to manage_requests_path
