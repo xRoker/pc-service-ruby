@@ -1,0 +1,79 @@
+<div class="container">
+
+    <div class="col-md-11">
+
+        <table class="table" id="request-list">
+            <thead>
+                <tr>
+                    <th>Typ</th>
+                    <th>Model</th>
+                    <th>Opis</th>
+                    <th>Gwarancja</th>
+                    <th>Priorytet</th>
+                    <th>Pracownik</th>
+                    <th>Data przyjęcia</th>
+                </tr>
+            </thead>
+
+
+            <% @requests.each do |request| %>
+            <tr data-toggle="collapse" data-target="#collapseme" data-value = <%= request.id %>>
+                <td><%= request.device_type %></td>
+                <td><%= request.model %></td>
+                <td><%= truncate request.description, length: 50 %></td>
+
+                <% if request.warranty %>
+                <td><i class="glyphicon glyphicon-ok"></i></td>
+                <% else %>
+                <td><i class="glyphicon glyphicon-remove"></i></td>
+                <% end %>
+
+                <td><%= request.priority %></td>
+            <% if request.service %>
+            <td><%= request.service.user.name %> <%= request.service.user.surname %></td>
+            <td><%= request.service.created_at.strftime '%d %b %H:%M' %></td>
+            <% else %>
+            <td> - </td>
+            <td> - </td>
+            <% end %>
+        </tr>
+
+        <tr class="collapse out" id="block<%= request.id %>">
+            <td colspan="3">
+                <div class="row">
+                    <% if request.service %>
+                    <div class="col-md-6">
+                        <b>Pracownik</b><br/>
+                        <%= request.service.user.name %> <%= request.service.user.surname %><br/>
+                        <b>Uwagi</b><br/>
+                        <%= request.service.notes %><br/>
+                        <b>Termin realizacji</b><br/>
+                        <%= request.service.expected_term %><br/>
+                        <b>Cena: <b><%= number_to_currency request.service.cost %><br/>
+                        <b>Status: </b><%= request.service.status %>
+
+                    </div>
+
+                    <div class="col-md-6">
+                    </div>
+
+                    <% end %>
+                </div>
+            </td>
+
+            <td colspan="4">
+                <div class = "info-column">
+                <b>Adres</b><br/>
+                <% address = request.address %>
+                <%= "#{address.name} #{address.surname}, #{address.zip}, #{address.city}, #{address.street} #{address.apartment}, tel. #{address.phone}" %><br/>
+                <b>Opis problemu</b><br/>
+                <%= request.description %>
+            </div>
+            </td>
+        </tr>
+
+        <% end %>
+
+    </table>
+</div>
+</div>

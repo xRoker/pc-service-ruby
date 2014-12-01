@@ -8,8 +8,10 @@ class RequestsController < ApplicationController
   def manage
     @requests = Request.includes(:service).all
     @accepted_requests = Request.accepted.where(services: {user_id: @user.id})
+  end
 
-    @new_service = Service.new
+  def monitor
+    @requests = @user.requests
   end
 
 	def new

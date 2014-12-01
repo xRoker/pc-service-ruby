@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :requests do
     collection do
       get 'manage'
+      get 'monitor'
     end
     member do
       post 'accept'
