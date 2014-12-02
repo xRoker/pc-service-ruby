@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'posts#index'
+  root to: 'static_pages#home'
 
   resources :users do
     collection do

@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 			session[:user_id] = user.id
 
 			if params[:notify]
-				NewsMailer.registration(user).deliver
+				NewsMailer.registration(user)
 			end
 
 			redirect_to user

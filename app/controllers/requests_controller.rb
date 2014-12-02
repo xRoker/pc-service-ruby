@@ -48,6 +48,7 @@ class RequestsController < ApplicationController
     service = Request.find(params[:id]).create_service
     service.user = @user
     service.save
+    NewsMailer.acceptation(service.request.user.email)
     redirect_to manage_requests_path
   end
 

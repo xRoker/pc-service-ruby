@@ -11,8 +11,8 @@ class NewsMailer < ActionMailer::Base
     mail(to: user.email, subject: "Witam w naszem serwisie!").send_later(:deliver)
   end
 
-  def test email
-    mail(to: email, subject: "Test mail", body: "THIS IS A TEST email").send_later(:deliver)
+  def acceptation email
+    mail(to: email, subject: "Naprawa", body: "Witam! Naprawa została przyjęta").send_later(:deliver)
   end
 
 end
