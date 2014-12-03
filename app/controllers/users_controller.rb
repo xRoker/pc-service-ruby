@@ -114,8 +114,8 @@ class UsersController < ApplicationController
 			if session[:user_id]
 				begin
 					@current_user = User.find(session[:user_id])
-				rescue
-					# Logout if there is unexisting user in the session
+				rescue ActiveRecord::RecordNotFound
+					# Logout if there is an unexisting user in the session
 					session[:user_id] = nil
 				end
 			end

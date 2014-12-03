@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       begin 
         @user = User.find(session[:user_id])
-      rescue
+      rescue ActiveRecord::RecordNotFound
+        # Logout if there is an unexisting user in the session
         session[:user_id] = nil
         nil
       end
