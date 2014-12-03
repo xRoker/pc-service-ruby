@@ -4,11 +4,4 @@ class Service < ActiveRecord::Base
 
   enum status: [:accepted, :analized, :done, :verified, :closed]
 
-  before_save :default_values
-
-
-  def default_values
-    self.status ||= 1
-  end
-
 end
