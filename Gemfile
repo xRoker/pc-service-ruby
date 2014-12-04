@@ -35,6 +35,7 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'hirb'
 gem 'reform'
+gem 'simple_form'
 
 group :development, :test do
   gem 'rspec-rails' 
