@@ -1,14 +1,13 @@
 class ServicesController < ApplicationController
 
   def update
-    service = Service.find(params[:id])
-    service.attributes = service_params.except(:status)
-    service.status = service_params[:status].to_i
-    service.save
+    service = ServiceForm.new(Service.find(params[:id]))
+    service.persist service_params
+
     redirect_to manage_requests_path
   end
 
   def service_params
-      params.require(:service).permit(:notes, :expected_term, :cost, :surname, :status)
+      params.require(:service).permit(:notes, :expected_term, :cost, :status)
   end
 end
