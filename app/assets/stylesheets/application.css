@@ -307,7 +307,7 @@
     float: left;
 }
 
-#req-right-clm .form-control{
+.req-right-clm .form-control{
    height: 28px;
    line-height: 28px;
 }
@@ -361,4 +361,8 @@ body {
 .jumbotron {
     margin-right: 60px;
     background-image: url(http://microsoftsecurityhelp.com/wp-content/uploads/2014/06/business-computer-repairs-and-support.jpg);   
+}
+
+.cccf{
+    color: red;
 }

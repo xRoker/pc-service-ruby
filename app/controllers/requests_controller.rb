@@ -15,33 +15,28 @@ class RequestsController < ApplicationController
   end
 
 	def new
-    @addresses = Address.where(user_id: @user.id)
+    @request = Request.new
+    @addresses = []
+    Address.where(user_id: @user.id).each do |address|
+      @addresses << [address.to_str, address.id]
+    end
+    @addresses << ["Nowy...", -1]
+
+    @name = @user.name
+    @surname = @user.surname
   end
 
   def create
-
-    # Check if a value of the dropdown menu is not "Nowy..."
-    if params[:address_select] == "Nowy..."
-
-      address = Address.new address_params
-      address.user_id = @user.id
-      address.save
-      address_id = address.id
-
-    else address_id = params[:address_select]
-
+    request = RequestForm.new(Request.new)
+<<<<<<< HEAD
+    if request.apply @user.id, request_params, address_params
+=======
+    if request.apply @user.id, request_params
+>>>>>>> FETCH_HEAD
+      flash[:success] = true
+    else flash[:fail] = true
     end
-
-      request = Request.new request_params
-      request.user_id = @user.id
-      request.address_id = address_id
-      request.warranty ||= false
-
-      if request.save
-        flash[:success] = true
-      else flash[:fail] = true
-      end
-      redirect_to new_request_path
+    redirect_to new_request_path
   end
 
   def accept
@@ -60,12 +55,17 @@ class RequestsController < ApplicationController
   private
 
 
-    def address_params
-      params.require(:address).permit(:name, :surname, :phone, :company, :zip, :city, :aprtment)
-    end
+    # def address_params
+    #   params.require(:address).permit(:name, :surname, :phone, :company, :zip, :city, :aprtment)
+    # end
 
     def request_params
-      params.require(:request).permit(:device_type, :model, :description, :priority, :warranty)
+      params.require(:request).permit(:device_type, :model_name, :description, :priority, :warranty,
+<<<<<<< HEAD
+       :address_id)
+=======
+       :address_id, address: [:name, :surname, :phone, :company, :zip, :city, :street, :apartment])
+>>>>>>> FETCH_HEAD
     end
 
     def let_signed_only

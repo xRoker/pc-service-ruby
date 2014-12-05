@@ -12,55 +12,38 @@
     </div>
   </row>
 
-  <form role="form" action= <%= requests_path %> method="post" id="request-form" autocomplete="off">
+  <row>
+    <div class="col-md-6">
+      <%= simple_form_for @request do |f| %>
 
-    <row>
+      <%= f.input :device_type, label: "Typ sprzętu", collection: ["Laptop", "Smartphone", "Desktop"], include_blank: false %>
+      <%= f.input :model_name, label: "Nazwa modelu" %>
+      <%= f.input :description, label: "Opis" %>
+      <%= f.input :priority, label: "Priorytet", collection: ["Niski", "Wysoki", "Awaryjny"], include_blank: false %>
+      <%= f.input :warranty, label: "Gwarancja", wrapper_html: {class: "col-md-6"} %>
+      <%= f.button :submit, "Złożyć" %>
+    </div>
 
-      <!-- Left column -->
-      <div class="col-md-6">
+    <div class="col-md-6 req-right-clm">
+      <%= f.input :address_id, label: "Adres", collection: @addresses, include_blank: false, wrapper_html: {id: "address-select"} %>
+      <div class="control-group address-block">
+        <%= simple_fields_for :address do |a| %>
+        <%= a.input :name, label: "Imię", input_html: {value: @name}, wrapper_html: {class: "col-md-6"} %>
+        <%= a.input :surname, label: "Nazwisko", input_html: {value: @surname}, wrapper_html: {class: "col-md-6"} %>
+        <%= a.input :company, label: "Firma", wrapper_html: {class: "col-md-6"} %>
+        <%= a.input :phone, label: "Telefon", wrapper_html: {class: "col-md-6"} %>
+        <%= a.input :zip, label: "Kod pocztowy", wrapper_html: {class: "col-md-6"} %>
+        <%= a.input :city, label: "Miejscowość", wrapper_html: {class: "col-md-6"} %>
+        <%= a.input :street, label: "Ulica", wrapper_html: {class: "col-md-6"} %>
+        <%= a.input :apartment, label: "Dom/Mieszkanie", wrapper_html: {class: "col-md-6"} %>
+      </div>
+    </div>
 
-        <div class = "form-group">
-          <label for="device-type">Typ sprzętu</label>
-          <select name="request[device_type]" class="form-control">
-            <option>Laptop</option>
-            <option>Smartphone</option>
-            <option>Desktop</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="model">Model</label>
-          <input class="form-control" name="request[model]" placeholder="Nazwa modelu"></input>
-        </div>
-        <div class="form-group">
-          <label for="description">Opis</label>
-          <textarea name="request[description]" class="form-control" rows="8"></textarea>
-        </div>
-        <row>
-          <div class="col-md-6">
-            <div class="checkbox">
-              <label>
-                <input name="request[warranty]" type="checkbox"> Gwarancja
-              </label>
-            </div>
-          </div>
-          <div class="col-md-2 form-control-static">
-            <label for="priority">Priorytet:</label>
-          </div>
-          <div class="col-md-4">
-            <select name="request[priority]" class="form-control">
-              <option>Niski</option>
-              <option>Wysoki</option>
-              <option>Awaryjny</option>
-            </select>
-          </div>
+    <% end %>
 
-        </row>
+    <% end %>
 
-        <row>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-default" id="btn-request">Złożyć</button>
-          </div>
-        </row>
+  </row>    </row>
         
 
       </div>

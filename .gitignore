@@ -17,3 +17,9 @@
 
 # Ignore application configuration
 /config/application.yml
+
+app/views/requests/new_old.html.erb
+
+app/views/requests/new.html.erb
+
+app/views/requests/new.html.erb

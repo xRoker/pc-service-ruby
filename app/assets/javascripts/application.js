@@ -28,12 +28,12 @@ var main = function () {
     });
 
 
-    if ($("#address-select :selected").val() == "Nowy...") {
+    if ($("#address-select :selected").val() == -1) {
         $('.address-block').show();
     }
 
     $('#address-select').change( function(){
-        if ($("#address-select :selected").val() == "Nowy...") {
+        if ($("#address-select :selected").val() == -1) {
             $('.address-block').show();
         } else {
             $('.address-block').hide();
