@@ -28,11 +28,7 @@ class RequestsController < ApplicationController
 
   def create
     request = RequestForm.new(Request.new)
-<<<<<<< HEAD
     if request.apply @user.id, request_params, address_params
-=======
-    if request.apply @user.id, request_params
->>>>>>> FETCH_HEAD
       flash[:success] = true
     else flash[:fail] = true
     end
@@ -55,17 +51,13 @@ class RequestsController < ApplicationController
   private
 
 
-    # def address_params
-    #   params.require(:address).permit(:name, :surname, :phone, :company, :zip, :city, :aprtment)
-    # end
+    def address_params
+      params.require(:address).permit(:name, :surname, :phone, :company, :zip, :city, :aprtment)
+    end
 
     def request_params
       params.require(:request).permit(:device_type, :model_name, :description, :priority, :warranty,
-<<<<<<< HEAD
        :address_id)
-=======
-       :address_id, address: [:name, :surname, :phone, :company, :zip, :city, :street, :apartment])
->>>>>>> FETCH_HEAD
     end
 
     def let_signed_only
